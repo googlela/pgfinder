@@ -1,0 +1,39 @@
+{
+  "name": "nrchat",
+  "version": "1.0.0",
+  "description": "node react chat app using socket",
+  "main": "index.ts",
+  "scripts": {
+    "start": "tsc && node bin/app.js",
+    "dev1": "nodemon src/app.ts",
+    "pm2": "NODE_ENV=production pm2 start bin/app.js --watch -i max",
+    "pm2:staging": "NODE_ENV=staging pm2 start bin/app.js --watch -i max",
+    "prod": "NODE_ENV=production node bin/app.js",
+    "staging": "NODE_ENV=staging node bin/app.js",
+    "dev": "HTTPS=true NODE_ENV=development ts-node-dev --inspect --respawn src/app.ts",
+    "test": "NODE_ENV=test nyc ./node_modules/.bin/mocha --require ts-node/register ./src/test/**/**/**/**/*.test.ts",
+    "build": "rimraf bin && tsc -p tsconfig.json"
+  },
+  "author": "savaliyatushar",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.16.4",
+    "express-validator": "^6.9.2",
+    "js-sha512": "^0.8.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.11.16",
+    "nodemon": "^2.0.7",
+    "socket.io": "^3.1.1",
+    "ts-node": "^9.1.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.16.1",
+    "@types/node": "^14.14.28",
+    "tslint": "^5.12.1",
+    "typescript": "^3.3.3"
+  },
+  "keywords": []
+}
