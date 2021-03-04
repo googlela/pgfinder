@@ -1,0 +1,16 @@
+img.App-logo {
+    height: 60px;
+}
+.MuiContainer-root.header.container.MuiContainer-maxWidthLg{
+    padding: 10px;
+}
+
+.header_start {
+    background: blue;
+    top: 0;
+    position: absolute;
+    width: 100%;
+}
+.slider{
+    margin-top: 87px;
+}
