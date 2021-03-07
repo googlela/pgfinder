@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from "./component/header/header";
-import SliderI from "./component/slider/slider"
+import Login from "./component/Login/login";
 
 class App extends React.Component {
   render() {
@@ -9,7 +9,7 @@ class App extends React.Component {
 
       <div className="body">
         <Header />
-        <SliderI />
+        <Login />
       </div>
     )
   }
