@@ -8,9 +8,7 @@ class TopMenu extends React.Component {
         return (
             <div className="menu">
                 <Button color="inherit">Login</Button>
-                <Button color="inherit">Login</Button>
-                <Button color="inherit">Login</Button>
-                <Button color="inherit">Login</Button>
+
                 <BrowserRouter basename={'/'}>
                     <Switch>
                         {/* <Route exact path='/auth/login' component={Login} /> */}
