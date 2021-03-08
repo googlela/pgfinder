@@ -1,0 +1,100 @@
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+
+. ~/.nvm/nvm.sh
+
+nvm install node
+node --version
+
+npm install -g npm@latest
+npm --version
+
+npm install --global yarn
+yarn --version
+
+npm install -g @angular/cli
+ng --version
+
+npm install -g pm2
+pm2 --version
+
+sudo yum update -y
+
+sudo yum install git -y
+git version
+
+cd /var
+sudo mkdir projects
+
+sudo chmod 777 -R projects/
+
+
+
+
+
+
+
+
+
+#### Setup MongoDB in Server
+> MongoDB Installation
+
+> https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
+
+> https://docs.mongodb.com/manual/tutorial/install-mongodb-on-amazon/
+
+sudo nano /etc/yum.repos.d/mongodb-org-4.4.repo
+
+[mongodb-org-4.4]
+name=MongoDB Repository
+baseurl=https://repo.mongodb.org/yum/amazon/2/mongodb-org/4.4/x86_64/
+gpgcheck=1
+enabled=1
+gpgkey=https://www.mongodb.org/static/pgp/server-4.4.asc
+
+3. sudo apt-get update | sudo yum update -y
+
+4. sudo apt-get install -y mongodb-org | sudo yum install -y mongodb-org
+
+5. sudo systemctl start mongod
+
+6. sudo systemctl status mongod
+
+7. sudo systemctl enable mongod
+
+-----
+
+> After Installation
+
+##### Run
+
+1. sudo nano /etc/mongod.conf
+> update <'Private IP Address'> - binding ip
+
+
+security:
+authorization: enabled
+
+
+2. sudo systemctl restart mongod
+
+3. mongo --host 'ec2-3-129-19-68.us-east-2.compute.amazonaws.com' --port 27017
+
+4. Security - Update Inbound Rules - Custom TCP Port - 27017
+
+db.createUser({user: "tushar",pwd: "tushar2197",roles: [{ role: "root", db: "admin" }]});
+
+5. MongoDB Compass - mongodb://username:password>@<'public IP Address'>:27017/
+
+> Other Commands
+
+1. sudo systemctl stop mongod
+sudo service mongod stop
+
+2. sudo systemctl restart mongod
+
+3. mongo
+
+4. sudo apt-get purge mongodb-org*
+
+5. sudo rm -r /var/log/mongodb
+sudo rm -r /var/lib/mongodb
