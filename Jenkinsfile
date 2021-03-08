@@ -5,8 +5,8 @@ pipeline {
             steps {
                 sh "cd react"
                 sh "npm install"
-                sh "npm run build"
-                sh "run-p server start"
+                sh "yarn run build"
+                sh "run -p server start"
             }
         }
         stage("Deploy") {
