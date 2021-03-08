@@ -6,7 +6,7 @@ pipeline {
                 sh "cd react"
                 sh "npm install"
                 sh "npm run build"
-                sh "run-p server start"
+                sh "npm run -p server start"
             }
         }
         stage("Deploy") {
