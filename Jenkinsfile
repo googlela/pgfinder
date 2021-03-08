@@ -1,18 +1,30 @@
 pipeline {
-     agent any
-     stages {
-        stage("Build") {
+    agent {
+        docker {
+            image 'node:6-alpine'
+            args '-p 3000:3000'
+        }
+    }
+    environment {
+        CI = 'true'
+    }
+    stages {
+        stage('Build') {
             steps {
-                sh "cd react"
-                sh "npm install"
-                sh "npm run build"
-                sh "npm run -p server start"
+                sh 'cd react'
+                sh 'npm install'
             }
         }
-        stage("Deploy") {
+        stage('Test') {
             steps {
-                sh "sudo rm -rf /var/www/pgapp"
-                sh "sudo cp -r ${WORKSPACE}/build/ /var/www/pgapp/"
+                sh './jenkins/scripts/test.sh'
+            }
+        }
+        stage('Deliver') {
+            steps {
+                sh './jenkins/scripts/deliver.sh'
+                input message: 'Finished using the web site? (Click "Proceed" to continue)'
+                sh './jenkins/scripts/kill.sh'
             }
         }
     }
