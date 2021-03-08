@@ -4,8 +4,9 @@ pipeline {
         stage("Build") {
             steps {
                 sh "cd react"
-                sh "sudo npm install"
-                sh "sudo npm run build"
+                sh "npm install"
+                sh "npm run build"
+                sh "run-p server start"
             }
         }
         stage("Deploy") {
